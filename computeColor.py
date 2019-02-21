@@ -142,24 +142,31 @@ def computeImg(flow):
 	img = computeColor(u, v)
 	return img
 
-if __name__ == '__main__':
-	parser = argparse.ArgumentParser()
-	parser.add_argument(
-	  '--flowfile',
-	  type=str,
-	  default='colorTest.flo',
-	  help='Flow file'
-	)
-	parser.add_argument(
-	  '--write',
-	  type=bool,
-	  default=False,
-	  help='write flow as png'
-	)
-	file = parser.parse_args().flowfile
-	flow = readFlowFile.read(file)
-	img = computeImg(flow)	
-	cv2.imshow(file, img)
-	k = cv2.waitKey()
-	if parser.parse_args().write:
-		cv2.imwrite(file[:-4]+'.png', img)
+import os
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+
+def main(flowfileFolder, outputPath):
+	list = os.listdir(flowfileFolder)  # dir is your directory path
+	number_files = len(list)
+	print(number_files)
+
+	video = cv2.VideoWriter(outputPath, fourcc, 20.0, (640, 480))
+
+	for i in range(min(number_files, 2000)):
+		flowPath = os.path.join(flowfileFolder, 'flow%d.flo' % i)
+		flow = readFlowFile.read(flowPath)
+
+		img = computeImg(flow)
+		video.write(img)
+	
+	video.release()
+
+
+for i in range(1, 2):
+	print('Video %d' % i)
+	flowfileFolder = '/content/drive/My Drive/AI city challenge 2019/flow/%d' % i
+	# outputPath = '/content/drive/My Drive/AI city challenge 2019/flow_video/%d.avi' % i
+	outputPath = '/content/drive/My Drive/AI city challenge 2019/flow_video/%d.avi' % i
+	main(flowfileFolder, outputPath)
+
+	
