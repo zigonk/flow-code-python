@@ -143,14 +143,13 @@ def computeImg(flow):
 	return img
 
 import os
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
 
 def main(flowfileFolder, outputPath):
 	list = os.listdir(flowfileFolder)  # dir is your directory path
 	number_files = len(list)
 	print(number_files)
 
-	video = cv2.VideoWriter(outputPath, fourcc, 20.0, (640, 480))
+	video = cv2.VideoWriter(outputPath, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 30, (800, 410))
 
 	for i in range(min(number_files, 1000)):
 		flowPath = os.path.join(flowfileFolder, 'flow%d.flo' % i)
@@ -158,6 +157,8 @@ def main(flowfileFolder, outputPath):
 
 		img = computeImg(flow)
 		video.write(img)
+		# cv2.imshow('flow', img)
+		# cv2.waitKey(1)
 	
 	video.release()
 
@@ -166,7 +167,10 @@ for i in range(1, 2):
 	print('Video %d' % i)
 	flowfileFolder = '/content/drive/My Drive/AI city challenge 2019/flow/%d' % i
 	outputPath = '/content/drive/My Drive/AI city challenge 2019/flow_video/%d.avi' % i
-	# outputPath = './%d.avi' % i
+
+	# flowfileFolder = './flow/%d' % i
+	# outputPath = './flow_video/%d.avi' % i
+
 	main(flowfileFolder, outputPath)
 
 	

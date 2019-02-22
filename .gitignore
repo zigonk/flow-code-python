@@ -1,1 +1,3 @@
 *.pyc
+/flow
+/flow_video
