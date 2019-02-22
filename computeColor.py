@@ -152,7 +152,7 @@ def main(flowfileFolder, outputPath):
 
 	video = cv2.VideoWriter(outputPath, fourcc, 20.0, (640, 480))
 
-	for i in range(min(number_files, 2000)):
+	for i in range(min(number_files, 1000)):
 		flowPath = os.path.join(flowfileFolder, 'flow%d.flo' % i)
 		flow = readFlowFile.read(flowPath)
 
@@ -165,8 +165,8 @@ def main(flowfileFolder, outputPath):
 for i in range(1, 2):
 	print('Video %d' % i)
 	flowfileFolder = '/content/drive/My Drive/AI city challenge 2019/flow/%d' % i
-	# outputPath = '/content/drive/My Drive/AI city challenge 2019/flow_video/%d.avi' % i
-	outputPath = './%d.avi' % i
+	outputPath = '/content/drive/My Drive/AI city challenge 2019/flow_video/%d.avi' % i
+	# outputPath = './%d.avi' % i
 	main(flowfileFolder, outputPath)
 
 	
