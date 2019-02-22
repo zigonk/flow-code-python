@@ -163,7 +163,7 @@ def main(flowfileFolder, outputPath):
 	video.release()
 
 
-for i in range(1, 2):
+for i in range(33, 34):
 	print('Video %d' % i)
 	flowfileFolder = '/content/drive/My Drive/AI city challenge 2019/flow/%d' % i
 	outputPath = '/content/drive/My Drive/AI city challenge 2019/flow_video/%d.avi' % i
