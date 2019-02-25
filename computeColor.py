@@ -152,7 +152,9 @@ def main(flowfileFolder, outputPath):
 	video = cv2.VideoWriter(outputPath, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 30, (800, 410))
 
 	for i in range(number_files):
-		flowPath = os.path.join(flowfileFolder, 'flow%d.flo' % ((i+1)*2))
+		flowPath = os.path.join(flowfileFolder, 'flow%d.flo' % ((i+1)*5))
+		if not os.path.exists(flowPath):
+			continue
 		flow = readFlowFile.read(flowPath)
 
 		img = computeImg(flow)
