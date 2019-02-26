@@ -152,7 +152,7 @@ def main(flowfileFolder, outputPath):
 	video = cv2.VideoWriter(outputPath, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 30, (800, 410))
 
 	for i in range(number_files):
-		flowPath = os.path.join(flowfileFolder, 'flow%d.flo' % ((i+1)*5))
+		flowPath = os.path.join(flowfileFolder, 'flow%d.flo' % (18300+(i*2)))
 		if not os.path.exists(flowPath):
 			continue
 		flow = readFlowFile.read(flowPath)
@@ -165,7 +165,7 @@ def main(flowfileFolder, outputPath):
 	video.release()
 
 
-for i in range(33, 34):
+for i in range(91, 92):
 	print('Video %d' % i)
 	flowfileFolder = '/content/drive/My Drive/PWC-Net/flow/%d' % i
 	outputPath = '/content/drive/My Drive/PWC-Net/flow_video/%d.avi' % i
