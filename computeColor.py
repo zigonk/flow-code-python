@@ -166,7 +166,7 @@ def main(flowfileFolder, outputPath):
 	video.release()
 
 
-for i in range(91, 92):
+for i in range(33, 34):
 	print('Video %d' % i)
 	flowfileFolder = '/content/drive/My Drive/PWC-Net/flow/%d' % i
 	outputPath = '/content/drive/My Drive/PWC-Net/flow_video/%d.avi' % i
