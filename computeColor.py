@@ -153,7 +153,6 @@ def main(flowfileFolder, outputPath):
 
 	for i in range(number_files):
 		flowPath = os.path.join(flowfileFolder, 'flow%d.flo' % ((i+1)*2))
-		print('%d' % 17852+(i*2))
 		if not os.path.exists(flowPath):
 			continue
 		flow = readFlowFile.read(flowPath)
